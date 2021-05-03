@@ -12,6 +12,7 @@ use App\Ad;
 use App\Helpers\Thumbnail;
 use DB;
 
+
 class ApiController extends Controller{    
    
     //platforms
