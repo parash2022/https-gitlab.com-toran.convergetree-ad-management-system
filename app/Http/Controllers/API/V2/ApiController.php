@@ -123,17 +123,19 @@ class ApiController extends Controller
 							}
 						
 							if(!$ads->isEmpty()){
-							$i=0;
-							foreach($ads as $at){
-								$data[$catName][$child->queryKey][$i]['platform'] 	= isset($at->platform->name)?$at->platform->name:'';
-								$data[$catName][$child->queryKey][$i]['adType']		= isset($at->adType->name)?$at->adType->name:'';
-								$data[$catName][$child->queryKey][$i]['title'] 		= $at->title;
-								$data[$catName][$child->queryKey][$i]['url']   		= $at->url;
-								$data[$catName][$child->queryKey][$i]['image'] 		= Thumbnail::url($at->image);
-								$data[$catName][$child->queryKey][$i]['category']  	= $this->Categories($at);
-								$i++;
+								$i=0;
+								foreach($ads as $at){
+									$data[$catName][$child->queryKey][$i]['platform'] 	= isset($at->platform->name)?$at->platform->name:'';
+									$data[$catName][$child->queryKey][$i]['adType']		= isset($at->adType->name)?$at->adType->name:'';
+									$data[$catName][$child->queryKey][$i]['title'] 		= $at->title;
+									$data[$catName][$child->queryKey][$i]['url']   		= $at->url;
+									$data[$catName][$child->queryKey][$i]['image'] 		= Thumbnail::url($at->image);
+									$data[$catName][$child->queryKey][$i]['category']  	= $this->Categories($at);
+									$i++;
+								}
+							}else{
+								$data[$catName][$child->queryKey]=[];
 							}
-						}
 						}
 					}else{
 						if($isValidPlatform['valid']){
@@ -152,6 +154,8 @@ class ApiController extends Controller
 								$data[$catName][$i]['category'] = $this->Categories($at);
 								$i++;
 							}
+						}else {
+							$data[$catName][$i]=[];
 						}
 					} 					
 				}
