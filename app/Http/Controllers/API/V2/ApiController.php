@@ -12,9 +12,7 @@ use App\Ad;
 use App\Helpers\Thumbnail;
 use DB;
 
-class ApiController extends Controller
-{
-    
+class ApiController extends Controller{    
    
     //platforms
     public function platforms(){
@@ -82,8 +80,9 @@ class ApiController extends Controller
 
     public function ads(Request $request){ 
 
-    	$data = [];
-    	$response = ['status'=>true,'data'=>$data];
+    	$data 		= [];
+		$noData		= [];
+    	$response 	= ['status'=>true,'data'=>$data];
 
     	//parameters status,platform,adType,adCategory
     	//status: Running, Expired, Scheduled
@@ -134,7 +133,7 @@ class ApiController extends Controller
 									$i++;
 								}
 							}else{
-								$data[$catName][$child->queryKey]=[];
+								$noData[$catName][$child->queryKey]=[];
 							}
 						}
 					}else{
@@ -154,14 +153,14 @@ class ApiController extends Controller
 								$data[$catName][$i]['category'] = $this->Categories($at);
 								$i++;
 							}
-						}else {
-							$data[$catName][$i]=[];
+						}else{
+							$noData[$catName]=[];
 						}
 					} 					
 				}
 			}
 			
-			$response['data'] = $data;
+			$response['data'] = array_merge_recursive($data,$noData);
 			return response()->json($response);
 		}		 
     }
