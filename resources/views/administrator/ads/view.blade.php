@@ -109,7 +109,7 @@ $plus7Days = $defaultDate->addDays(7)->format('Y-m-d');
                     </td>
                     <td width="150">
                          @if($ad->image && App\Helpers\Thumbnail::exist($ad->image))
-                           <img  src="{{App\Helpers\Thumbnail::url($ad->image,'xx')}}" style="width: 100%;height: auto;">
+                           <img  src="{{App\Helpers\Thumbnail::url($ad->image)}}" style="width: 100%;height: auto;">
                          @endif
                     </td>
                     <td>{{$ad->title}}</td>
