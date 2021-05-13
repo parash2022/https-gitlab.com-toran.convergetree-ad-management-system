@@ -84,6 +84,7 @@ jQuery(document).ready(function($) {
     e.preventDefault();
     var box = $(this).closest('.featured-photo-box');
     box.find('.featured-input.has-thumb').remove();
+    box.find('.thumb-preview').closest('div.featured-input').remove();
     box.find('input').val('');
     box.find('.featured-input').removeClass('d-none');  
 
