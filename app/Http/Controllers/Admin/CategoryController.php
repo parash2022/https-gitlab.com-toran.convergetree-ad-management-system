@@ -9,16 +9,24 @@ use DB;
 
 class CategoryController extends Controller
 {
-    public function getSubCats(Request $request){
-       
-    	$categories = Term::where('taxonomy_id',2)->where('term_id',$request->catid)->orderBy('name','asc')->get();
-    	$response = [];
-    	if(!$categories->isEmpty()){
-    		foreach($categories as $cat){
-    			$response[$cat->id] = $cat->name;
-    		}
-    	}
-       
-    	echo json_encode($response);
-    }
+	public function getSubCats(Request $request)
+	{
+
+		$categories = Term::where('taxonomy_id', 2)->where('term_id', $request->catid)->orderBy('name', 'asc')->get();
+		$response = [];
+		if (!$categories->isEmpty()) {
+			foreach ($categories as $cat) {
+				$response[$cat->id] = $cat->name;
+			}
+		}
+
+		echo json_encode($response);
+	}
+
+	public static function getSubCategory($id)
+	{
+
+		$categories = Term::where('taxonomy_id', 2)->where('term_id', $id)->orderBy('name', 'asc')->get();
+		return $categories;
+	}
 }
