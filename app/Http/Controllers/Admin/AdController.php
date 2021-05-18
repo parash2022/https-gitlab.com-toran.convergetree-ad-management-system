@@ -64,7 +64,7 @@ class AdController extends Controller
                 $query->where('expiry', '<', $today);
             }
         }
-        $ads = $query->orderBy('id', 'DESC')->paginate(10);
+        $ads = $query->orderBy('updated_at', 'DESC')->paginate(10);
         return view('administrator.ads.view', compact('ads', 'categories', 'clients', 'adtypes', 'platforms'));
     }
 
