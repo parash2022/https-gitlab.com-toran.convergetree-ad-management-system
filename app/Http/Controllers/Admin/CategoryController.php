@@ -12,11 +12,11 @@ class CategoryController extends Controller
 	public function getSubCats(Request $request)
 	{
 
-		$categories = Term::where('taxonomy_id', 2)->where('term_id', $request->catid)->orderBy('name', 'asc')->get();
+		$categories = Term::where('taxonomy_id', 2)->where('term_id', $request->catid)->orderBy('name', 'ASC')->get();
 		$response = [];
 		if (!$categories->isEmpty()) {
 			foreach ($categories as $cat) {
-				$response[$cat->id] = $cat->name;
+				$response['_' . $cat->id] = $cat->name;
 			}
 		}
 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
 	public static function getSubCategory($id)
 	{
 
-		$categories = Term::where('taxonomy_id', 2)->where('term_id', $id)->orderBy('name', 'asc')->get();
+		$categories = Term::where('taxonomy_id', 2)->where('term_id', $id)->orderBy('name', 'ASC')->get();
 		return $categories;
 	}
 }

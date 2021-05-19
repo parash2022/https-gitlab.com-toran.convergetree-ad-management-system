@@ -20,12 +20,13 @@ jQuery(document).ready(function($) {
         url : posturl,
         type: "POST",
         data: {'catid' : catid, '_token' : CSRF_TOKEN},
-        success:function( response ){
-          var obj = $.parseJSON(response);  
-          var str = '<option value="">Select sub-category</option>';
+        success:function( response ){          
+          var obj = JSON.parse(response); 
           
+          var str = '<option value="">Select sub-category</option>';
             $.each(obj, function(key,value){ 
-              str += '<option value="'+key+'">'+value+'</option>';
+              var id = key.split('_');              
+              str += '<option value="'+id[1]+'">'+value+'</option>';
             });
           
           $('#ad-subcategory').html(str);
