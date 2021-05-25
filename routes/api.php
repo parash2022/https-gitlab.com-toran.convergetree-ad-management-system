@@ -14,19 +14,20 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
-Route::prefix('V1')->group(function(){
+Route::prefix('V1')->group(function () {
 	Route::get('/platforms', 'API\V1\V1Controller@platforms');
 	Route::get('/adTypes', 'API\V1\V1Controller@adTypes');
 	Route::get('/adCategories', 'API\V1\V1Controller@adCategories');
 	Route::get('/ads', 'API\V1\V1Controller@ads');
 });
 
-Route::prefix('V2')->group(function(){
+Route::prefix('V2')->group(function () {
 	Route::get('/platforms', 'API\V2\ApiController@platforms');
 	Route::get('/adTypes', 'API\V2\ApiController@adTypes');
 	Route::get('/adCategories', 'API\V2\ApiController@adCategories');
 	Route::get('/ads', 'API\V2\ApiController@ads');
+	Route::post('/appUser', 'API\V2\ApiController@appUser');
 });
