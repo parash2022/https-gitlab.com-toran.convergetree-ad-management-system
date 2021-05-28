@@ -4,7 +4,7 @@
 
 @include('administrator.notices.flash')
 <?php
-$perpage = 2;
+$perpage = 10;
 $page = request()->page ? request()->page : 1;
 if ($page > 1) {
     $sn = ($perpage * ($page - 1) + 1);

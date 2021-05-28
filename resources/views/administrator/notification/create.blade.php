@@ -29,7 +29,8 @@
             <div class="row mg-t-20">
                 <label class="col-sm-4 form-control-label">{{__('Message')}}:<span class="tx-danger">*</span></label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <textarea class="editable" rows="2" cols="80" name="message"></textarea>
+                    <!-- add class editable for rich text editor -->
+                    <textarea class="" rows="5" cols="90" name="message"></textarea>
                 </div>
             </div>
 
