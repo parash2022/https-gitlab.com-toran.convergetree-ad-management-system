@@ -16,8 +16,8 @@ class CreateAppUsersTable extends Migration
         Schema::create('app_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('deviceID');
-            $table->string('appVersion')->nullable(true);;
-            $table->string('platform')->nullable(true);;
+            $table->string('appVersion')->nullable(true);
+            $table->string('platform')->nullable(true);
             $table->string('model')->nullable(true);
             $table->string('email')->nullable(true);
             $table->timestamps();

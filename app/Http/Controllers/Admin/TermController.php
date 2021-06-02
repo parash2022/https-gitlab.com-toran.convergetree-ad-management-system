@@ -128,7 +128,7 @@ class TermController extends Controller
 			}
 		}
 		$string = $parentname . $catname;
-		preg_match_all("/[A-Z]/", $string, $matches);
+		preg_match_all("/[A-Z0-9]/", $string, $matches);
 		return strtoupper(implode('', $matches[0]));
 	}
 }

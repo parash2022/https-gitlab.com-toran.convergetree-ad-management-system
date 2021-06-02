@@ -255,16 +255,19 @@ class ApiController extends Controller
 		$checkDeviceID = AppUser::where('deviceID', $request->token)->get();
 		//dd($checkDeviceID);
 
-		if (!$checkDeviceID->isEmpty()) {
-			$appUser =   AppUser::find($checkDeviceID[0]->id);
-			$status = 'Updated';
-		} else $appUser = new AppUser;
+		// if (!$checkDeviceID->isEmpty()) {
+		// 	$appUser =   AppUser::find($checkDeviceID[0]->id);
+		// 	$status = 'Updated';
+		// } else $appUser = new AppUser;
+
+		$appUser = new AppUser;
 
 		$appUser->deviceID = $request->token;
 		$appUser->email = $request->email;
 		$appUser->appVersion = $request->appVersion;
 		$appUser->platform = $request->platform;
 		$appUser->model = $request->model;
+		$appUser->status = 1;
 		$appUser->save();
 
 		$response = ['status' => 'success', 'message' => 'App User ' . $status . '.'];

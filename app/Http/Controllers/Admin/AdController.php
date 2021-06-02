@@ -86,14 +86,14 @@ class AdController extends Controller
 
 
         $ad = new Ad;
-        $ad->platform_id  = $request->platform;
-        $ad->client_id    = $this->getClientId($request);
-        $ad->adtype_id    = $request->adtype;
-        $ad->title = $request->title;
-        $ad->url   = $request->url;
-        $ad->image = isset($featured_path[0]) ? $featured_path[0] : '';
-        $ad->publish_date  = $request->publish_date;
-        $ad->expiry  = $request->expiry;
+        $ad->platform_id    = $request->platform;
+        $ad->client_id      = $this->getClientId($request);
+        $ad->adtype_id      = $request->adtype;
+        $ad->title          = $request->title;
+        $ad->url            = $request->url;
+        $ad->image          = isset($featured_path[0]) ? $featured_path[0] : '';
+        $ad->publish_date   = $request->publish_date;
+        $ad->expiry         = $request->expiry;
         $ad->save();
 
         $ad->terms()->attach($request->cat);
@@ -111,6 +111,7 @@ class AdController extends Controller
         $platforms = Platform::orderBy('id', 'asc')->get();
         $id = $request->id;
         $ad = Ad::find($id);
+
         if (!$ad) {
             return redirect()->route('administrator.ads.index');
         }

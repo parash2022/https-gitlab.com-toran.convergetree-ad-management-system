@@ -7,7 +7,14 @@ jQuery(document).ready(function($) {
     }else{
       $('#create-client').addClass('d-none');
     }
-  });    
+  });   
+  
+  $('#ad-subcategory').select2({
+    width: '100%',
+    placeholder: "Select Sub-Categories",
+    allowClear: true
+  });
+  
   
   $('#ad-category').change(function(){
     var catid = $(this).val();

@@ -69,7 +69,9 @@ class NoticeController extends Controller
 
             $data   = ['sound' => 'default', 'title' => $request->title, 'body' => $request->message, 'data' => ['slug' => $request->slug]];
 
-            $appUser = AppUser::all();
+            //$appUser = AppUser::all();
+            $appUser = AppUser::where('status', 1)->get();
+
             if (!$appUser->isEmpty()) {
 
                 foreach ($appUser as $user) {
@@ -84,6 +86,12 @@ class NoticeController extends Controller
 
                     $success    = ($status == true) ? $success + 1 : $success + 0;
                     $failed     = ($status == false) ? $failed + 1 : $failed + 0;
+
+                    if ($status == false) {
+
+                        $user->status = 0;
+                        $user->save();
+                    }
                 }
             }
 

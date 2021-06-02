@@ -10,6 +10,7 @@
   <link href="{{asset('lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
   <link href="{{asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/select2/css/select2.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('css/bracket.css')}}">
   <link rel="stylesheet" href="{{asset('css/bracket.oreo.css')}}">
 </head>
@@ -38,17 +39,20 @@
     var baseurl = "<?php echo url('/'); ?>";
   </script>
 
+
   <script src="{{asset('lib/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('lib/jquery-ui/ui/widgets/datepicker.js')}}"></script>
   <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('lib/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('lib/moment/min/moment.min.js')}}"></script>
   <script src="{{asset('lib/summernote/summernote-bs4.min.js')}}"></script>
+  <script src="{{asset('lib/select2/js/select2.min.js')}}"></script>
 
   <script src="{{asset('js/bracket.js')}}"></script>
   <script src="{{asset('js/admin.js')}}"></script>
 
 
+  @yield('script')
 
 
 </body>

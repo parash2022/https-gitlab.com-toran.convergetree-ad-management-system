@@ -91,7 +91,7 @@ use App\Http\Controllers\Admin\CategoryController;
     <div class="row mg-t-20">
       <label class="col-sm-4 form-control-label">{{__('Subcategory')}}:<span class="tx-danger">*</span></label>
       <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-        <select name="cat[]" class="form-control" id="ad-subcategory">
+        <select name="cat[]" class="form-control" id="ad-subcategory" multiple>
           <option value="">Select sub-category</option>
           <?php
           if (old('cat.0') != '') {
