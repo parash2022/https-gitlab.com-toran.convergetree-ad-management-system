@@ -22,22 +22,21 @@ class UserRequest extends FormRequest
      * @return array
      */
     public function rules()
-    { 
-        if($this->id){
+    {
+        if ($this->id) {
             return [
-                'name'      => ['required', 'string','min:2','max:255'],
-                'email'           => ['required', 'email', "unique:users,email,$this->id,id",'min:5','max:255'],
-                'password'        => ['nullable', 'string','min:4','max:255'],
-                'role'            => ['required', 'integer', 'exists:roles,id']
+                'name'              => ['required', 'string', 'min:2', 'max:255'],
+                'email'             => ['required', 'email', "unique:users,email,$this->id,id", 'min:5', 'max:255'],
+                'password'          => ['nullable', 'string', 'min:4', 'max:255'],
+                'role'              => ['required', 'integer', 'exists:roles,id']
             ];
-        }else{
+        } else {
             return [
-                'name'      => ['required', 'string','min:2','max:255'],
-                'email'           => ['required', 'email', "unique:users,email",'min:5','max:255'],
-                'password'        => ['required', 'string','min:4','max:255'],
-                'role'            => ['required', 'integer', 'exists:roles,id']
+                'name'              => ['required', 'string', 'min:2', 'max:255'],
+                'email'             => ['required', 'email', "unique:users,email", 'min:5', 'max:255'],
+                'password'          => ['required', 'string', 'min:4', 'max:255'],
+                'role'              => ['required', 'integer', 'exists:roles,id']
             ];
-            
         }
     }
 }
