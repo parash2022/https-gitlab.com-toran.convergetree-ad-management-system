@@ -251,26 +251,34 @@ class ApiController extends Controller
 		}
 
 		$status = 'Added';
+		//DB::enableQueryLog();
+		$checkDeviceID 	= AppUser::where('deviceID', $request->token)->orderBy('id', 'desc')->first();
+		//dd(DB::getQueryLog());		
 
-		$checkDeviceID = AppUser::where('deviceID', $request->token)->get();
-		//dd($checkDeviceID);
+		$userStat 		= true;
 
-		// if (!$checkDeviceID->isEmpty()) {
-		// 	$appUser =   AppUser::find($checkDeviceID[0]->id);
-		// 	$status = 'Updated';
-		// } else $appUser = new AppUser;
+		if ($checkDeviceID) {
+
+			$appUser 	=   $checkDeviceID;
+			$status 	= $appUser->status;
+
+			$userStat 	= ($status == 0) ? true : false;
+		}
 
 		$appUser = new AppUser;
 
-		$appUser->deviceID = $request->token;
-		$appUser->email = $request->email;
-		$appUser->appVersion = $request->appVersion;
-		$appUser->platform = $request->platform;
-		$appUser->model = $request->model;
-		$appUser->status = 1;
-		$appUser->save();
+		$appUser->deviceID 		= $request->token;
+		$appUser->email 		= $request->email;
+		$appUser->appVersion 	= $request->appVersion;
+		$appUser->platform 		= $request->platform;
+		$appUser->model 		= $request->model;
+		$appUser->status 		= 1;
+		if ($userStat == true)
+			$appUser->save();
 
-		$response = ['status' => 'success', 'message' => 'App User ' . $status . '.'];
+		$message = ($userStat == true) ? 'App User Added. ' : 'User Already exist. ';
+
+		$response = ['status' => 'success', 'message' =>  $message];
 
 		return response()->json($response, 200);
 	}
