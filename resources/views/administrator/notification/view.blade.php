@@ -4,6 +4,9 @@
 
 @include('administrator.notices.flash')
 <?php
+
+use \Illuminate\Support\Str;
+
 $perpage = 10;
 $page = request()->page ? request()->page : 1;
 if ($page > 1) {
@@ -41,7 +44,7 @@ if ($page > 1) {
                         <th scope="row">{{$sn}}</th>
                         <td>{{$notice->title}}</td>
                         <td>{!! $notice->body !!}</td>
-                        <td>{!! $notice->response !!}</td>
+                        <td><?php echo Str::words($notice->response, 6) ?></td>
                         <!-- <td>{{$notice->status == 1 ? 'success' : 'failed'}}</td> -->
                         <td>{{$notice->created_at->format('Y-m-d')}}</td>
                     </tr>
